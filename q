@@ -150,22 +150,20 @@ end
 
 function library.new(library, name, theme)
     for _, v in next, services.CoreGui:GetChildren() do
-        if v.Name == "frosty" then
+        if v.Name == "frosty is cute" then
             v:Destroy()
         end
     end
     if theme == "dark" then
-        MainColor = Color3.fromRGB(25, 25, 25)
-        Background = Color3.fromRGB(25, 25, 25)
-        zyColor = Color3.fromRGB(25, 25, 25)
-        beijingColor = Color3.fromRGB(25, 25, 25)
-        DTTransparency = 0.6
+        MainColor = Color3.fromRGB(28, 33, 55)
+        Background = Color3.fromRGB(28, 33, 55)
+        zyColor = Color3.fromRGB(37, 43, 71)
+        beijingColor = Color3.fromRGB(255, 247, 247)
     else
-        MainColor = Color3.fromRGB(25, 25, 25)
-        Background = Color3.fromRGB(25, 25, 25)
-        zyColor = Color3.fromRGB(25, 25, 25)
-        beijingColor = Color3.fromRGB(255, 255, 255)
-        DTTransparency = 0.6
+        MainColor = Color3.fromRGB(28, 33, 55)
+        Background = Color3.fromRGB(28, 33, 55)
+        zyColor = Color3.fromRGB(37, 43, 71)
+        beijingColor = Color3.fromRGB(255, 247, 247)
     end
     local dogent = Instance.new("ScreenGui")
     local Main = Instance.new("Frame")
@@ -191,7 +189,7 @@ function library.new(library, name, theme)
         syn.protect_gui(dogent)
     end
 
-    dogent.Name = "frosty"
+    dogent.Name = "frosty is cute"
     dogent.Parent = services.CoreGui
 
     function UiDestroy()
@@ -218,19 +216,6 @@ function library.new(library, name, theme)
     Main.ZIndex = 1
     Main.Active = true
     Main.Draggable = true
-    Main.Transparency = 1.0
-    services.UserInputService.InputEnded:Connect(
-        function(input)
-            if input.KeyCode == Enum.KeyCode.LeftControl then
-                if Main.Visible == true then
-                    Main.Visible = false
-                else
-                    Main.Visible = true
-                end
-            end
-        end
-    )
-    drag(Main)
 
     UICornerMain.Parent = Main
     UICornerMain.CornerRadius = UDim.new(0, 3)
@@ -247,12 +232,15 @@ function library.new(library, name, theme)
     DropShadow.Parent = DropShadowHolder
     DropShadow.AnchorPoint = Vector2.new(0.5, 0.5)
     DropShadow.BackgroundTransparency = 1.000
+    DropShadow.BorderSizePixel = 0
     DropShadow.Position = UDim2.new(0.5, 0, 0.5, 0)
-    DropShadow.Size = UDim2.new(1, 10, 1, 10)
-    DropShadow.Image = "rbxassetid://17383862235"
+    DropShadow.Size = UDim2.new(1, 43, 1, 43)
+    DropShadow.ZIndex = 0
+    DropShadow.Image = "rbxassetid://6015897843"
     DropShadow.ImageColor3 = Color3.fromRGB(255, 255, 255)
+    DropShadow.ImageTransparency = 0
+    DropShadow.ScaleType = Enum.ScaleType.Slice
     DropShadow.SliceCenter = Rect.new(49, 49, 450, 450)
-    DropShadow.ImageTransparency = 0 -- 设置贴花的透明度，0为完全不透明，1为完全透明
 
     UIGradient.Color =
         ColorSequence.new {
@@ -268,6 +256,7 @@ function library.new(library, name, theme)
         ColorSequenceKeypoint.new(0.90, Color3.fromRGB(255, 255, 0)),
         ColorSequenceKeypoint.new(1.00, Color3.fromRGB(0, 255, 0))
     }
+    UIGradient.Parent = DropShadow
 
     local TweenService = game:GetService("TweenService")
     local tweeninfo = TweenInfo.new(7, Enum.EasingStyle.Linear, Enum.EasingDirection.In, -1)
@@ -298,7 +287,6 @@ function library.new(library, name, theme)
     TabMain.BackgroundTransparency = 1.000
     TabMain.Position = UDim2.new(0.217000037, 0, 0, 3)
     TabMain.Size = UDim2.new(0, 448, 0, 353)
-    TabMain.Transparency = 1.0
 
     MainC.CornerRadius = UDim.new(0, 5.5)
     MainC.Name = "MainC"
@@ -309,7 +297,6 @@ function library.new(library, name, theme)
     SB.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
     SB.BorderColor3 = MainColor
     SB.Size = UDim2.new(0, 8, 0, 353)
-    SB.Transparency = 1.0
 
     SBC.CornerRadius = UDim.new(0, 6)
     SBC.Name = "SBC"
@@ -323,7 +310,6 @@ function library.new(library, name, theme)
     Side.ClipsDescendants = true
     Side.Position = UDim2.new(1, 0, 0, 0)
     Side.Size = UDim2.new(0, 110, 0, 353)
-    Side.Transparency = 1.0
 
     SideG.Color = ColorSequence.new {ColorSequenceKeypoint.new(0.00, zyColor), ColorSequenceKeypoint.new(1.00, zyColor)}
     SideG.Rotation = 90
@@ -488,22 +474,42 @@ function library.new(library, name, theme)
     )
     Open.Name = "Open"
     Open.Parent = dogent
-    Open.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
-    Open.BackgroundTransparency = 0.5 -- 调整按钮的透明度，0为完全不透明，1为完全透明
+    Open.BackgroundColor3 = Color3.fromRGB(28, 33, 55)
+    Open.BackgroundTransparency = 0
     Open.Position = UDim2.new(0.00829315186, 0, 0.31107837, 0)
     Open.Size = UDim2.new(0, 61, 0, 32)
+    Open.Transparency = 0.75
     Open.Font = Enum.Font.SourceSans
-    Open.Text = "隐藏-打开"
+    Open.Text = "隐藏/打开"
     Open.TextColor3 = Color3.fromRGB(255, 255, 255)
-    Open.TextTransparency = 0 -- 文字的透明度，0为完全不透明，1为完全透明
+    Open.TextTransparency = 0
     Open.TextSize = 14.000
     Open.Active = true
     Open.Draggable = true
+    local uihide = false
+
     Open.MouseButton1Click:Connect(
         function()
-            Main.Visible = not Main.Visible
+            if uihide == false then
+                uihide = true
+                Main:TweenPosition(UDim2.new(0.5, 0, 2, 0), "Out", "Sine", 0.9, true)
+                wait(0.5)
+                Main.Visible = false
+            else
+                Main.Visible = true
+                Main:TweenPosition(UDim2.new(0.5, 0, 0.451, 0), "Out", "Sine", 0.5, true)
+                wait(0.5)
+                uihide = false
+            end
         end
     )
+
+    wait(0.1)
+    Main:TweenPosition(UDim2.new(0.5, 0, 2, 0), "Out", "Sine", 0.7, true)
+    wait(0.5)
+    Main:TweenPosition(UDim2.new(0.5, 0, 0.5, 0), "Out", "Sine", 0.5, true)
+
+    drag(Main)
     UIG.Parent = Open
     local window = {}
     function window.Tab(window, name, icon)
@@ -654,16 +660,16 @@ function library.new(library, name, theme)
             local open = TabVal
             if TabVal ~= false then
                 Section.Size = UDim2.new(0.981000006, 0, 0, open and 36 + ObjsL.AbsoluteContentSize.Y + 8 or 36)
-                SectionOpened.ImageTransparency = (open and 0 or 0.5)
-                SectionOpen.ImageTransparency = (open and 0.5 or 0)
+                SectionOpened.ImageTransparency = (open and 0 or 1)
+                SectionOpen.ImageTransparency = (open and 1 or 0)
             end
 
             SectionToggle.MouseButton1Click:Connect(
                 function()
                     open = not open
                     Section.Size = UDim2.new(0.981000006, 0, 0, open and 36 + ObjsL.AbsoluteContentSize.Y + 8 or 36)
-                    SectionOpened.ImageTransparency = (open and 0 or 0.5)
-                    SectionOpen.ImageTransparency = (open and 0.5 or 0)
+                    SectionOpened.ImageTransparency = (open and 0 or 1)
+                    SectionOpen.ImageTransparency = (open and 1 or 0)
                 end
             )
 
@@ -692,7 +698,6 @@ function library.new(library, name, theme)
                 BtnModule.BorderSizePixel = 0
                 BtnModule.Position = UDim2.new(0, 0, 0, 0)
                 BtnModule.Size = UDim2.new(0, 428, 0, 38)
-                BtnModule.Transparency = 1
 
                 Btn.Name = "Btn"
                 Btn.Parent = BtnModule
@@ -705,7 +710,6 @@ function library.new(library, name, theme)
                 Btn.TextColor3 = Color3.fromRGB(255, 255, 255)
                 Btn.TextSize = 16.000
                 Btn.TextXAlignment = Enum.TextXAlignment.Left
-                Btn.BackgroundTransparency = DTTransparency
 
                 BtnC.CornerRadius = UDim.new(0, 6)
                 BtnC.Name = "BtnC"
@@ -735,13 +739,13 @@ function library.new(library, name, theme)
                 LabelModule.BorderSizePixel = 0
                 LabelModule.Position = UDim2.new(0, 0, NAN, 0)
                 LabelModule.Size = UDim2.new(0, 428, 0, 19)
+
                 TextLabel.Parent = LabelModule
                 TextLabel.BackgroundColor3 = zyColor
                 TextLabel.Size = UDim2.new(0, 428, 0, 22)
                 TextLabel.Font = Enum.Font.GothamSemibold
                 TextLabel.Text = text
                 TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-                TextLabel.BackgroundTransparency = DTTransparency
                 TextLabel.TextSize = 14.000
 
                 LabelC.CornerRadius = UDim.new(0, 6)
@@ -778,7 +782,6 @@ function library.new(library, name, theme)
                 ToggleBtn.Name = "ToggleBtn"
                 ToggleBtn.Parent = ToggleModule
                 ToggleBtn.BackgroundColor3 = zyColor
-                ToggleBtn.BackgroundTransparency = DTTransparency
                 ToggleBtn.BorderSizePixel = 0
                 ToggleBtn.Size = UDim2.new(0, 428, 0, 38)
                 ToggleBtn.AutoButtonColor = false
@@ -795,7 +798,6 @@ function library.new(library, name, theme)
                 ToggleDisable.Name = "ToggleDisable"
                 ToggleDisable.Parent = ToggleBtn
                 ToggleDisable.BackgroundColor3 = Background
-                ToggleDisable.BackgroundTransparency = 0.5
                 ToggleDisable.BorderSizePixel = 0
                 ToggleDisable.Position = UDim2.new(0.901869178, 0, 0.208881587, 0)
                 ToggleDisable.Size = UDim2.new(0, 36, 0, 22)
@@ -1010,7 +1012,6 @@ function library.new(library, name, theme)
                 TextboxBack.Name = "TextboxBack"
                 TextboxBack.Parent = TextboxModule
                 TextboxBack.BackgroundColor3 = zyColor
-                TextboxBack.BackgroundTransparency = DTTransparency
                 TextboxBack.BorderSizePixel = 0
                 TextboxBack.Size = UDim2.new(0, 428, 0, 38)
                 TextboxBack.AutoButtonColor = false
@@ -1116,7 +1117,6 @@ function library.new(library, name, theme)
                 SliderBack.Name = "SliderBack"
                 SliderBack.Parent = SliderModule
                 SliderBack.BackgroundColor3 = zyColor
-                SliderBack.BackgroundTransparency = DTTransparency
                 SliderBack.BorderSizePixel = 0
                 SliderBack.Size = UDim2.new(0, 428, 0, 38)
                 SliderBack.AutoButtonColor = false
@@ -1134,7 +1134,6 @@ function library.new(library, name, theme)
                 SliderBar.Parent = SliderBack
                 SliderBar.AnchorPoint = Vector2.new(0, 0.5)
                 SliderBar.BackgroundColor3 = Background
-                SliderBar.BackgroundTransparency = DTTransparency
                 SliderBar.BorderSizePixel = 0
                 SliderBar.Position = UDim2.new(0.369000018, 40, 0.5, 0)
                 SliderBar.Size = UDim2.new(0, 140, 0, 12)
@@ -1156,7 +1155,6 @@ function library.new(library, name, theme)
                 SliderValBG.Name = "SliderValBG"
                 SliderValBG.Parent = SliderBack
                 SliderValBG.BackgroundColor3 = Background
-                SliderValBG.BackgroundTransparency = DTTransparency
                 SliderValBG.BorderSizePixel = 0
                 SliderValBG.Position = UDim2.new(0.883177578, 0, 0.131578952, 0)
                 SliderValBG.Size = UDim2.new(0, 44, 0, 28)
@@ -1371,8 +1369,6 @@ function library.new(library, name, theme)
                 DropdownTop.Name = "DropdownTop"
                 DropdownTop.Parent = DropdownModule
                 DropdownTop.BackgroundColor3 = zyColor
-                DropdownTop.BackgroundTransparency = DTTransparency
-                DropdownTop.BackgroundTransparency = DTTransparency
                 DropdownTop.BorderSizePixel = 0
                 DropdownTop.Size = UDim2.new(0, 428, 0, 38)
                 DropdownTop.AutoButtonColor = false
