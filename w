@@ -1,3 +1,4 @@
+local fov = 25
 local RunService = game:GetService("RunService")
 local UserInputService = game:GetService("UserInputService")
 local Players = game:GetService("Players")
