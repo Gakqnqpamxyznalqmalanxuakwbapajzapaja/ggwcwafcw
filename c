@@ -1,5 +1,3 @@
---// Cache
-
 local game, workspace = game, workspace
 local getrawmetatable, getmetatable, setmetatable, pcall, getgenv, next, tick, select = getrawmetatable, getmetatable, setmetatable, pcall, getgenv, next, tick, select
 local Vector2new, Vector3new, Vector3zero, CFramenew, Color3fromRGB, Color3fromHSV, Drawingnew, TweenInfonew = Vector2.new, Vector3.new, Vector3.zero, CFrame.new, Color3.fromRGB, Color3.fromHSV, Drawing.new, TweenInfo.new
@@ -67,12 +65,6 @@ do
     local TemporaryConnection = Connect(__index(game, "DescendantAdded"), function() end)
     Disconnect = TemporaryConnection.Disconnect
     Disconnect(TemporaryConnection)
-end
-
---// 检查是否有多个进程
-
-if ExunysDeveloperAimbot then
-    ExunysDeveloperAimbot:Exit()
 end
 
 --// 环境变量
@@ -334,3 +326,5 @@ Environment.Load = Load
 Environment.Unload = Unload
 
 Load()
+
+return LOL
