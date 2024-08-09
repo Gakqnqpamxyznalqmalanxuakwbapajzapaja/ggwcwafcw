@@ -334,3 +334,4 @@ Environment.Load = Load
 Environment.Unload = Unload
 
 Load()
+return LOL
