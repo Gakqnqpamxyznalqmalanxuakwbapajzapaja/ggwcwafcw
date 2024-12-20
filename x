@@ -1,10 +1,3 @@
-local AkaliNotif = loadstring(game:HttpGet("https://github.com/XiaoYunCN/Dynissimo/raw/main/Scripts%2FAkaliNotif.lua"))()
-local Notify = AkaliNotif.Notify
-Notify({
-    Description = "✨ ⁣⁣⁣⁣云⁣⁣⁣⁣脚⁣⁣⁣⁣本全自制\n半缝合";
-    Title = "✨ 云⁣⁣⁣⁣⁣⁣⁣⁣脚⁣⁣⁣⁣⁣⁣⁣⁣本⁣⁣⁣⁣";
-    Duration = 11;
-});
 --// Variables
 local Players = game:GetService("Players")
 local RunService = game:GetService("RunService")
